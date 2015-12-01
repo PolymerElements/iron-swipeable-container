@@ -11,9 +11,7 @@
     "swipe",
     "swipeable"
   ],
-  "main": [
-    "iron-swipeable-container.html"
-  ],
+  "main": "iron-swipeable-container.html",
   "private": true,
   "repository": {
     "type": "git",
