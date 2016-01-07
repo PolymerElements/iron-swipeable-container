@@ -144,7 +144,7 @@ want to be swiped:
     },
 
     _addListeners: function(node) {
-      if (node.nodeType === Node.TEXT_NODE)
+      if (node.nodeType === Node.TEXT_NODE || node.nodeType === Node.COMMENT_NODE)
         return;
       // Set up the animation.
       node.style.transitionProperty = this._transitionProperty;
