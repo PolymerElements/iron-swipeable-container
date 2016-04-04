@@ -114,6 +114,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <div class="item blue">This is another div.</div>
       </iron-swipeable-container>
     </div>
+
+    <h4>Non-destructive swipe</h4>
+    <div class="vertical-section">
+      <iron-swipeable-container renewable swipe-style="curve">
+        <div class="item swipe">Items can optionally return to the 'deck'</div>
+
+        <paper-card class="swipe" heading="Swipe me!">
+          <div class="card-content">
+            You can automatically swipe custom elements, too. This is a paper-card.
+          </div>
+        </paper-card>
+
+        <paper-card class="swipe">
+          <div class="card-content">
+            This is another paper-card. Hello!
+          </div>
+        </paper-card>
+
+        <div class="item blue">This is another div.</div>
+      </iron-swipeable-container>
+    </div>
   </div>
 </body>
 </html>

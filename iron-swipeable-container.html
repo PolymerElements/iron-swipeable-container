@@ -37,6 +37,14 @@ class. Alternatively, to disable swiping on the whole container, you can use its
       <paper-card heading="Me neither :("></paper-card>
     </iron-swipeable-container>
 
+Swiped elements are removed from the DOM by default, but sometimes you may need
+to reuse those same elements, such as a 'deck' of items or an image carousel.
+
+<iron-swipeable-container renewable>
+      <div>I cannot be swiped</div>
+      <paper-card heading="Me neither :("></paper-card>
+    </iron-swipeable-container>
+
 It is a good idea to disable text selection on any of the children that you
 want to be swiped:
 
@@ -55,6 +63,11 @@ want to be swiped:
 
 <dom-module id="iron-swipeable-container">
   <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
     <content id="content"></content>
   </template>
 </dom-module>
@@ -85,6 +98,17 @@ want to be swiped:
        * If true, then the container will not allow swiping.
        */
       disabled: {
+        type: Boolean,
+        value: false
+      },
+
+      /**
+       * If true, then the swiped element will not be removed from the DOM.
+       * Useful for touch-friendly carousels and other web components that need to
+       * reuse the element.
+       * TODO: optionally return to original position or at the end of the 'deck'.
+       */
+      renewable: {
         type: Boolean,
         value: false
       },
@@ -139,7 +163,7 @@ want to be swiped:
     },
 
     _addListeners: function(node) {
-      if (node.nodeType === Node.TEXT_NODE)
+      if (node.nodeType === Node.TEXT_NODE || node.nodeType === Node.COMMENT_NODE)
         return;
       // Set up the animation.
       node.style.transitionProperty = this._transitionProperty;
@@ -249,11 +273,16 @@ want to be swiped:
       var target = event.currentTarget;
 
       if (this._swipeComplete && event.propertyName === 'opacity') {
-        Polymer.dom(this).removeChild(target);
+        if (this.renewable) {
+          target.style.transform = 'translate3d(0, 0, 0) rotate(0)';
+          target.style.opacity = '1';
+        } else {
+          Polymer.dom(this).removeChild(target);
+        }
         this.fire('iron-swipe',
-            { direction: this._direction > 0 ? 'right' : 'left',
-              target:target
-            });
+                { direction: this._direction > 0 ? 'right' : 'left',
+                  target:target
+                });
       }
     }
 
