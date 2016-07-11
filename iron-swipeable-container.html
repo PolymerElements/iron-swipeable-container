@@ -184,6 +184,7 @@ want to be swiped:
       } else if (track.state === 'end') {
         this._trackEnd(track, target);
       }
+      event.stopPropagation();
     },
 
     _trackStart: function(event, target) {
