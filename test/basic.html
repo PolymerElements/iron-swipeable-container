@@ -59,6 +59,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </template>
   </test-fixture>
 
+
+  <test-fixture id="nested-swipe">
+    <template>
+      <iron-swipeable-container id="outer">
+        <iron-swipeable-container id="inner">
+          <div id="native"></div>
+        </iron-swipeable-container>
+      </iron-swipeable-container>
+    </template>
+  </test-fixture>
+
   <script>
 
     suite('native elements', function() {
@@ -209,6 +220,31 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             expect(Polymer.dom(container).queryDistributedElements('*').length).to.be.equal(2);
             done();
           }, 1);
+        });
+      });
+    });
+
+    suite('nested swipe', function() {
+      test('dragging an element nested in two containers does not swipe both', function(done) {
+        var outer = fixture('nested-swipe');
+        var inner = outer.querySelector('#inner');
+        var element = inner.querySelector('#native');
+        var innerTransforms = [];
+
+        var swipeEventHandler = sinon.spy();
+        outer.addEventListener('iron-swipe', swipeEventHandler);
+
+        Polymer.Base.async(function() {
+          element.addEventListener('mousemove', function(event) {
+            innerTransforms.push(inner.style.transform);
+          });
+
+          inner.addEventListener('iron-swipe', function(event) {
+            expect(innerTransforms.join('')).to.be.equal('');
+            done();
+          });
+
+          MockInteractions.track(element, 60, 0);
         });
       });
     });
