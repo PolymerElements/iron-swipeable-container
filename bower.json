@@ -1,6 +1,6 @@
 {
   "name": "iron-swipeable-container",
-  "version": "1.0.3",
+  "version": "2.0.0",
   "description": "A container that alows any of its nested children to be swiped away.",
   "authors": [
     "The Polymer Authors"
@@ -21,15 +21,30 @@
   "homepage": "https://github.com/PolymerElements/iron-swipeable-container",
   "ignore": [],
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.1.0"
+    "polymer": "Polymer/polymer#2.0-preview"
   },
   "devDependencies": {
-    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0",
-    "web-component-tester": "^4.0.0",
-    "test-fixture": "PolymerElements/test-fixture#^1.0.0",
-    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
-    "iron-test-helpers": "PolymerElements/iron-test-helpers#^1.0.0",
-    "paper-card": "PolymerElements/paper-card#^1.0.0",
-    "paper-styles": "PolymerElements/paper-styles#^1.0.0"
+    "webcomponentsjs": "webcomponents/webcomponentsjs#v1",
+    "web-component-tester": "v6.0.0-prerelease.5",
+    "test-fixture": "PolymerElements/test-fixture#custom-elements-v1",
+    "iron-component-page": "PolymerElements/iron-component-page#2.0-preview",
+    "iron-test-helpers": "PolymerElements/iron-test-helpers#2.0-preview",
+    "paper-card": "PolymerElements/paper-card#2.0-preview",
+    "paper-styles": "PolymerElements/paper-styles#2.0-preview"
+  },
+  "variants": {
+    "1.x": {
+      "dependencies": {
+        "polymer": "Polymer/polymer#^1.1.0"
+      },
+      "devDependencies": {
+        "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0",
+        "test-fixture": "PolymerElements/test-fixture#^1.0.0",
+        "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+        "iron-test-helpers": "PolymerElements/iron-test-helpers#^1.0.0",
+        "paper-card": "PolymerElements/paper-card#^1.0.0",
+        "paper-styles": "PolymerElements/paper-styles#^1.0.0"
+      }
+    }
   }
 }
