@@ -95,6 +95,16 @@ want to be swiped:
       },
 
       /**
+       * The threshold ratio (of the width of the element) of initial swipe movement before the actual swipe will start
+       * Helpful in scenario's where swipeable containers are rendered in a vertically scrollable
+       * list to prevent the elements from "wiggling" while scrolling.
+       */
+      swipeThresholdRatio: {
+       type: Number,
+       value: 0
+      },
+
+      /**
        * The ratio of the width of the element that the translation animation
        * should happen over. For example, if the `widthRatio` is 3, the
        * animation will take place on a distance 3 times the width of the
@@ -128,7 +138,7 @@ want to be swiped:
     ready: function() {
       this._transitionProperty = 'opacity, transform';
       this._swipeComplete = false;
-      this._direction = '';
+      this._direction = 0;
     },
 
     attached: function() {
@@ -191,17 +201,33 @@ want to be swiped:
       // Save the width of the element, so that we don't trigger a style
       // recalc every time we need it.
       this._nodeWidth = target.offsetWidth;
+      this._swipeThreshold = this._nodeWidth * this.swipeThresholdRatio;
+
+      this._direction = 0;
       target.style.transition = 'none';
     },
 
     _trackMove: function(event, target) {
-      this._animate(event.dx, target);
+      var dx = event.dx;
+
+      // Do nothing if threshold has not been met
+      if (Math.abs(dx) < this._swipeThreshold) {
+        return;
+      }
+
+      this._direction = dx > 0 ? 1 : -1;
+
+      dx = dx + (this._direction * -this._swipeThreshold);
+      this._animate(dx, target);
     },
 
     _trackEnd: function(event, target) {
+      var dx = event.dx;
+
+      dx = dx + (this._direction * -this._swipeThreshold);
+
       // The element is swiped away if it's moved halfway its total width.
-      this._swipeComplete = Math.abs(event.dx) > this._nodeWidth / 2;
-      this._direction = event.dx > 0;
+      this._swipeComplete = Math.abs(dx) > this._nodeWidth / 2;
       this._swipeEnd(target);
     },
 
@@ -245,7 +271,7 @@ want to be swiped:
         // If the element is ready to be swiped away, then translate it to the full
         // transparency distance.
         var totalDistance = this._nodeWidth * this.widthRatio;
-        this._animate(this._direction ? totalDistance : -totalDistance, target);
+        this._animate(this._direction * totalDistance, target);
       } else {
         this._animate(0, target);
       }
@@ -256,10 +282,10 @@ want to be swiped:
 
       if (this._swipeComplete && event.propertyName === 'opacity') {
         Polymer.dom(this).removeChild(target);
-        this.fire('iron-swipe',
-            { direction: this._direction > 0 ? 'right' : 'left',
-              target:target
-            });
+        this.fire('iron-swipe', {
+          direction: this._direction === 1 ? 'right' : 'left',
+          target:target
+        });
       }
     }
 
