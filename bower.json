@@ -1,6 +1,6 @@
 {
   "name": "iron-swipeable-container",
-  "version": "1.0.3",
+  "version": "2.0.0",
   "description": "A container that alows any of its nested children to be swiped away.",
   "authors": [
     "The Polymer Authors"
