@@ -21,15 +21,29 @@
   "homepage": "https://github.com/PolymerElements/iron-swipeable-container",
   "ignore": [],
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.1.0"
+    "polymer": "Polymer/polymer#^2.0.0"
   },
   "devDependencies": {
-    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0",
-    "web-component-tester": "^4.0.0",
-    "test-fixture": "PolymerElements/test-fixture#^1.0.0",
-    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
-    "iron-test-helpers": "PolymerElements/iron-test-helpers#^1.0.0",
-    "paper-card": "PolymerElements/paper-card#^1.0.0",
-    "paper-styles": "PolymerElements/paper-styles#^1.0.0"
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0",
+    "web-component-tester": "^6.0.0",
+    "iron-component-page": "PolymerElements/iron-component-page#1 - 2",
+    "iron-test-helpers": "PolymerElements/iron-test-helpers#1 - 2",
+    "paper-card": "PolymerElements/paper-card#1 - 2",
+    "paper-styles": "PolymerElements/paper-styles#1 - 2"
+  },
+  "variants": {
+    "1.x": {
+      "dependencies": {
+        "polymer": "Polymer/polymer#^1.1.0"
+      },
+      "devDependencies": {
+        "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0",
+        "web-component-tester": "^4.0.0",
+        "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+        "iron-test-helpers": "PolymerElements/iron-test-helpers#^1.0.0",
+        "paper-card": "PolymerElements/paper-card#^1.0.0",
+        "paper-styles": "PolymerElements/paper-styles#^1.0.0"
+      }
+    }
   }
 }
