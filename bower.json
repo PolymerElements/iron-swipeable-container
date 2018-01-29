@@ -21,7 +21,7 @@
   "homepage": "https://github.com/PolymerElements/iron-swipeable-container",
   "ignore": [],
   "dependencies": {
-    "polymer": "Polymer/polymer#^2.0.0"
+    "polymer": "Polymer/polymer#1.9 - 2"
   },
   "devDependencies": {
     "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0",
@@ -34,7 +34,7 @@
   "variants": {
     "1.x": {
       "dependencies": {
-        "polymer": "Polymer/polymer#^1.1.0"
+        "polymer": "Polymer/polymer#^1.9"
       },
       "devDependencies": {
         "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0",
