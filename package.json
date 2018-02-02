@@ -1,0 +1,10 @@
+{
+  "name": "@polymer/iron-swipeable-container",
+  "private": true,
+  "description": "A container that alows any of its nested children to be swiped away.",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/PolymerElements/iron-swipeable-container.git"
+  },
+  "license": "http://polymer.github.io/LICENSE.txt"
+}
