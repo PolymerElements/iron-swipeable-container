@@ -82,18 +82,18 @@ interface IronSwipeableContainerElement extends Polymer.Element {
    * The CSS transition applied while swiping.
    */
   transition: string|null|undefined;
-  ready(): any;
-  attached(): any;
-  _addListeners(node: any): any;
-  _removeListeners(node: any): any;
-  detached(): any;
-  _onTrack(event: any): any;
-  _trackStart(event: any, target: any): any;
-  _trackMove(event: any, target: any): any;
-  _trackEnd(event: any, target: any): any;
-  _animate(x: any, target: any): any;
-  _swipeEnd(target: any): any;
-  _onTransitionEnd(event: any): any;
+  ready(): void;
+  attached(): void;
+  _addListeners(node: any): void;
+  _removeListeners(node: any): void;
+  detached(): void;
+  _onTrack(event: any): void;
+  _trackStart(event: any, target: any): void;
+  _trackMove(event: any, target: any): void;
+  _trackEnd(event: any, target: any): void;
+  _animate(x: any, target: any): void;
+  _swipeEnd(target: any): void;
+  _onTransitionEnd(event: any): void;
 }
 
 interface HTMLElementTagNameMap {
