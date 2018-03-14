@@ -95,6 +95,13 @@ want to be swiped:
       },
 
       /**
+       * If true, destroy the swiped element.
+       */
+      destroy: {
+        type: Boolean,
+        value: true
+      },
+      /**
        * The ratio of the width of the element that the translation animation
        * should happen over. For example, if the `widthRatio` is 3, the
        * animation will take place on a distance 3 times the width of the
@@ -255,7 +262,8 @@ want to be swiped:
       var target = event.currentTarget;
 
       if (this._swipeComplete && event.propertyName === 'opacity') {
-        Polymer.dom(this).removeChild(target);
+        if ( this.destroy )
+          Polymer.dom(this).removeChild(target);
         this.fire('iron-swipe',
             { direction: this._direction > 0 ? 'right' : 'left',
               target:target
