@@ -65,7 +65,6 @@ want to be swiped:
 </dom-module>
 
 <script>
-
   Polymer({
     is: 'iron-swipeable-container',
 
@@ -81,18 +80,12 @@ want to be swiped:
        * options are `curve | horizontal`. If left unspecified, the default
        * is assumed to be `horizontal`.
        */
-      swipeStyle: {
-       type: String,
-       value: 'horizontal'
-      },
+      swipeStyle: {type: String, value: 'horizontal'},
 
       /**
        * If true, then the container will not allow swiping.
        */
-      disabled: {
-        type: Boolean,
-        value: false
-      },
+      disabled: {type: Boolean, value: false},
 
       /**
        * The ratio of the width of the element that the translation animation
@@ -100,10 +93,7 @@ want to be swiped:
        * animation will take place on a distance 3 times the width of the
        * element being swiped.
        */
-      widthRatio: {
-       type: Number,
-       value: 3
-      },
+      widthRatio: {type: Number, value: 3},
 
       /**
        * The ratio of the total animation distance after which the opacity
@@ -111,18 +101,12 @@ want to be swiped:
        * the `opacityRate` is 0.5, then the element needs to travel half its
        * width before its opacity starts decreasing.
        */
-      opacityRate: {
-       type: Number,
-       value: 0.2
-      },
+      opacityRate: {type: Number, value: 0.2},
 
       /**
        * The CSS transition applied while swiping.
        */
-      transition: {
-        type: String,
-        value: '300ms cubic-bezier(0.4, 0.0, 1, 1)'
-      }
+      transition: {type: String, value: '300ms cubic-bezier(0.4, 0.0, 1, 1)'}
     },
 
     ready: function() {
@@ -132,8 +116,8 @@ want to be swiped:
     },
 
     attached: function() {
-      this._nodeObserver = Polymer.dom(this.$.content).observeNodes(
-          function(mutations) {
+      this._nodeObserver =
+          Polymer.dom(this.$.content).observeNodes(function(mutations) {
             for (var i = 0; i < mutations.addedNodes.length; i++) {
               this._addListeners(mutations.addedNodes[i]);
             }
@@ -214,7 +198,8 @@ want to be swiped:
       // Opacity distance overflow. `this._nodeWidth * this.opacityRate` is the
       // total distance the element needs to travel to become completely
       // transparent, and `x` is how much the element has already travelled.
-      var opaqueDistance = Math.max(0, Math.abs(x) - this._nodeWidth * this.opacityRate);
+      var opaqueDistance =
+          Math.max(0, Math.abs(x) - this._nodeWidth * this.opacityRate);
       var opacity = Math.max(0, (totalDistance - opaqueDistance) / totalDistance);
       target.style.opacity = opacity;
 
@@ -227,7 +212,9 @@ want to be swiped:
         // Assume the element will be completely transparent at 90 degrees, so
         // figure out the rotation and vertical displacement needed to
         // achieve that.
-        var y = totalDistance - Math.sqrt(totalDistance * totalDistance - opaqueDistance * opaqueDistance);
+        var y = totalDistance -
+            Math.sqrt(
+                totalDistance * totalDistance - opaqueDistance * opaqueDistance);
         var deg = (1 - opacity) * direction * 90;
 
         translate = 'translate3d(' + x + 'px,' + y + 'px,0)';
@@ -242,8 +229,8 @@ want to be swiped:
       target.style.transition = this.transition;
 
       if (this._swipeComplete) {
-        // If the element is ready to be swiped away, then translate it to the full
-        // transparency distance.
+        // If the element is ready to be swiped away, then translate it to the
+        // full transparency distance.
         var totalDistance = this._nodeWidth * this.widthRatio;
         this._animate(this._direction ? totalDistance : -totalDistance, target);
       } else {
@@ -256,10 +243,9 @@ want to be swiped:
 
       if (this._swipeComplete && event.propertyName === 'opacity') {
         Polymer.dom(this).removeChild(target);
-        this.fire('iron-swipe',
-            { direction: this._direction > 0 ? 'right' : 'left',
-              target:target
-            });
+        this.fire(
+            'iron-swipe',
+            {direction: this._direction > 0 ? 'right' : 'left', target: target});
       }
     }
 

@@ -71,7 +71,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </test-fixture>
 
   <script>
-
     suite('native elements', function() {
       test('dragging less than halfway does not swipe', function(done) {
         var container = fixture('basic');
@@ -81,12 +80,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           var swipeEventHandler = sinon.spy();
           container.addEventListener('iron-swipe', swipeEventHandler);
 
-          expect(Polymer.dom(container).queryDistributedElements('*').length).to.be.equal(2);
+          expect(Polymer.dom(container).queryDistributedElements('*').length)
+              .to.be.equal(2);
           MockInteractions.track(element, 10, 0);
 
-          Polymer.Base.async(function(){
+          Polymer.Base.async(function() {
             expect(swipeEventHandler.callCount).to.be.equal(0);
-            expect(Polymer.dom(container).queryDistributedElements('*').length).to.be.equal(2);
+            expect(Polymer.dom(container).queryDistributedElements('*').length)
+                .to.be.equal(2);
             done();
           }, 1);
         });
@@ -97,10 +98,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         var element = container.querySelector('#native');
 
         Polymer.Base.async(function() {
-          expect(Polymer.dom(container).queryDistributedElements('*').length).to.be.equal(2);
+          expect(Polymer.dom(container).queryDistributedElements('*').length)
+              .to.be.equal(2);
 
           container.addEventListener('iron-swipe', function(event) {
-            expect(Polymer.dom(container).queryDistributedElements('*').length).to.be.equal(1);
+            expect(Polymer.dom(container).queryDistributedElements('*').length)
+                .to.be.equal(1);
             done();
           });
 
@@ -116,12 +119,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           var swipeEventHandler = sinon.spy();
           container.addEventListener('iron-swipe', swipeEventHandler);
 
-          expect(Polymer.dom(container).queryDistributedElements('*').length).to.be.equal(2);
-          MockInteractions.track(element, 60, 0);  // this amount would normally swipe.
+          expect(Polymer.dom(container).queryDistributedElements('*').length)
+              .to.be.equal(2);
+          MockInteractions.track(
+              element, 60, 0);  // this amount would normally swipe.
 
-          Polymer.Base.async(function(){
+          Polymer.Base.async(function() {
             expect(swipeEventHandler.callCount).to.be.equal(0);
-            expect(Polymer.dom(container).queryDistributedElements('*').length).to.be.equal(2);
+            expect(Polymer.dom(container).queryDistributedElements('*').length)
+                .to.be.equal(2);
             done();
           }, 1);
         });
@@ -137,12 +143,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         container.addEventListener('iron-swipe', swipeEventHandler);
 
         Polymer.Base.async(function() {
-          expect(Polymer.dom(container).queryDistributedElements('*').length).to.be.equal(2);
+          expect(Polymer.dom(container).queryDistributedElements('*').length)
+              .to.be.equal(2);
           MockInteractions.track(element, 10, 0);
 
-          Polymer.Base.async(function(){
+          Polymer.Base.async(function() {
             expect(swipeEventHandler.callCount).to.be.equal(0);
-            expect(Polymer.dom(container).queryDistributedElements('*').length).to.be.equal(2);
+            expect(Polymer.dom(container).queryDistributedElements('*').length)
+                .to.be.equal(2);
             done();
           }, 1);
         });
@@ -153,10 +161,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         var element = container.querySelector('#custom');
 
         Polymer.Base.async(function() {
-          expect(Polymer.dom(container).queryDistributedElements('*').length).to.be.equal(2);
+          expect(Polymer.dom(container).queryDistributedElements('*').length)
+              .to.be.equal(2);
 
           container.addEventListener('iron-swipe', function(event) {
-            expect(Polymer.dom(container).queryDistributedElements('*').length).to.be.equal(1);
+            expect(Polymer.dom(container).queryDistributedElements('*').length)
+                .to.be.equal(1);
             done();
           });
 
@@ -172,12 +182,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           var swipeEventHandler = sinon.spy();
           container.addEventListener('iron-swipe', swipeEventHandler);
 
-          expect(Polymer.dom(container).queryDistributedElements('*').length).to.be.equal(2);
-          MockInteractions.track(element, 60, 0);  // this amount would normally swipe.
+          expect(Polymer.dom(container).queryDistributedElements('*').length)
+              .to.be.equal(2);
+          MockInteractions.track(
+              element, 60, 0);  // this amount would normally swipe.
 
-          Polymer.Base.async(function(){
+          Polymer.Base.async(function() {
             expect(swipeEventHandler.callCount).to.be.equal(0);
-            expect(Polymer.dom(container).queryDistributedElements('*').length).to.be.equal(2);
+            expect(Polymer.dom(container).queryDistributedElements('*').length)
+                .to.be.equal(2);
             done();
           }, 1);
         });
@@ -185,68 +198,78 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     });
 
     suite('no swipe', function() {
-      test('dragging a native element more than halfway does not swipe', function(done) {
-        var container = fixture('no-swipe');
-        var element = container.querySelector('#native');
+      test(
+          'dragging a native element more than halfway does not swipe',
+          function(done) {
+            var container = fixture('no-swipe');
+            var element = container.querySelector('#native');
 
-        var swipeEventHandler = sinon.spy();
-        container.addEventListener('iron-swipe', swipeEventHandler);
+            var swipeEventHandler = sinon.spy();
+            container.addEventListener('iron-swipe', swipeEventHandler);
 
-        Polymer.Base.async(function() {
-          expect(Polymer.dom(container).queryDistributedElements('*').length).to.be.equal(2);
-          MockInteractions.track(element, 60, 0);
+            Polymer.Base.async(function() {
+              expect(Polymer.dom(container).queryDistributedElements('*').length)
+                  .to.be.equal(2);
+              MockInteractions.track(element, 60, 0);
 
-          Polymer.Base.async(function(){
-            expect(swipeEventHandler.callCount).to.be.equal(0);
-            expect(Polymer.dom(container).queryDistributedElements('*').length).to.be.equal(2);
-            done();
-          }, 1);
-        });
-      });
+              Polymer.Base.async(function() {
+                expect(swipeEventHandler.callCount).to.be.equal(0);
+                expect(Polymer.dom(container).queryDistributedElements('*').length)
+                    .to.be.equal(2);
+                done();
+              }, 1);
+            });
+          });
 
-      test('dragging a custom element more than halfway does not swipe', function(done) {
-        var container = fixture('no-swipe');
-        var element = container.querySelector('#custom');
+      test(
+          'dragging a custom element more than halfway does not swipe',
+          function(done) {
+            var container = fixture('no-swipe');
+            var element = container.querySelector('#custom');
 
-        var swipeEventHandler = sinon.spy();
-        container.addEventListener('iron-swipe', swipeEventHandler);
+            var swipeEventHandler = sinon.spy();
+            container.addEventListener('iron-swipe', swipeEventHandler);
 
-        Polymer.Base.async(function() {
-          expect(Polymer.dom(container).queryDistributedElements('*').length).to.be.equal(2);
-          MockInteractions.track(element, 60, 0);
+            Polymer.Base.async(function() {
+              expect(Polymer.dom(container).queryDistributedElements('*').length)
+                  .to.be.equal(2);
+              MockInteractions.track(element, 60, 0);
 
-          Polymer.Base.async(function(){
-            expect(swipeEventHandler.callCount).to.be.equal(0);
-            expect(Polymer.dom(container).queryDistributedElements('*').length).to.be.equal(2);
-            done();
-          }, 1);
-        });
-      });
+              Polymer.Base.async(function() {
+                expect(swipeEventHandler.callCount).to.be.equal(0);
+                expect(Polymer.dom(container).queryDistributedElements('*').length)
+                    .to.be.equal(2);
+                done();
+              }, 1);
+            });
+          });
     });
 
     suite('nested swipe', function() {
-      test('dragging an element nested in two containers does not swipe both', function(done) {
-        var outer = fixture('nested-swipe');
-        var inner = outer.querySelector('#inner');
-        var element = inner.querySelector('#native');
-        var innerTransforms = [];
+      test(
+          'dragging an element nested in two containers does not swipe both',
+          function(done) {
+            var outer = fixture('nested-swipe');
+            var inner = outer.querySelector('#inner');
+            var element = inner.querySelector('#native');
+            var innerTransforms = [];
 
-        var swipeEventHandler = sinon.spy();
-        outer.addEventListener('iron-swipe', swipeEventHandler);
+            var swipeEventHandler = sinon.spy();
+            outer.addEventListener('iron-swipe', swipeEventHandler);
 
-        Polymer.Base.async(function() {
-          element.addEventListener('mousemove', function(event) {
-            innerTransforms.push(inner.style.transform);
+            Polymer.Base.async(function() {
+              element.addEventListener('mousemove', function(event) {
+                innerTransforms.push(inner.style.transform);
+              });
+
+              inner.addEventListener('iron-swipe', function(event) {
+                expect(innerTransforms.join('')).to.be.equal('');
+                done();
+              });
+
+              MockInteractions.track(element, 60, 0);
+            });
           });
-
-          inner.addEventListener('iron-swipe', function(event) {
-            expect(innerTransforms.join('')).to.be.equal('');
-            done();
-          });
-
-          MockInteractions.track(element, 60, 0);
-        });
-      });
     });
   </script>
 </body>
