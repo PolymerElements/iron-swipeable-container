@@ -85,7 +85,7 @@ want to be swiped:
       /**
        * If true, then the container will not allow swiping.
        */
-      disabled: {type: Boolean, value: false, observer: '_NOOP_IE11'},
+      disabled: {type: Boolean, value: false, observer: '__NOOP_IE11'},
 
       /**
        * The ratio of the width of the element that the translation animation
@@ -111,7 +111,7 @@ want to be swiped:
 
     // This observer is only here because it prevents a bug that occurs in IE11
     // where attributes used to set boolean properties do not otherwise apply.
-    _NOOP_IE11: function() {},
+    __NOOP_IE11: function() {},
 
     ready: function() {
       this._transitionProperty = 'opacity, transform';
