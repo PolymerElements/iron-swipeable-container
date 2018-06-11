@@ -71,6 +71,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </test-fixture>
 
   <script>
+    (function() {
+    // The maximum number of milliseconds after completing a track action that
+    // may occur before the 'iron-swipe' event is dispatched, if any would be.
+    // This value should be longer than the swipe transition.
+    const SWIPE_TIMEOUT = 500;
+
     suite('native elements', function() {
       test('dragging less than halfway does not swipe', function(done) {
         var container = fixture('basic');
@@ -89,8 +95,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             expect(Polymer.dom(container).queryDistributedElements('*').length)
                 .to.be.equal(2);
             done();
-          }, 1);
-        });
+          }, SWIPE_TIMEOUT);
+        }, 1);
       });
 
       test('dragging more than halfway swipes it', function(done) {
@@ -108,7 +114,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           });
 
           MockInteractions.track(element, 60, 0);
-        });
+        }, 1);
       });
 
       test('an element with disable-swipe cannot be swiped', function(done) {
@@ -129,8 +135,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             expect(Polymer.dom(container).queryDistributedElements('*').length)
                 .to.be.equal(2);
             done();
-          }, 1);
-        });
+          }, SWIPE_TIMEOUT);
+        }, 1);
       });
     });
 
@@ -152,8 +158,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             expect(Polymer.dom(container).queryDistributedElements('*').length)
                 .to.be.equal(2);
             done();
-          }, 1);
-        });
+          }, SWIPE_TIMEOUT);
+        }, 1);
       });
 
       test('dragging more than halfway swipes it', function(done) {
@@ -171,7 +177,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           });
 
           MockInteractions.track(element, 60, 0);
-        });
+        }, 1);
       });
 
       test('an element with disable-swipe cannot be swiped', function(done) {
@@ -192,8 +198,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             expect(Polymer.dom(container).queryDistributedElements('*').length)
                 .to.be.equal(2);
             done();
-          }, 1);
-        });
+          }, SWIPE_TIMEOUT);
+        }, 1);
       });
     });
 
@@ -217,8 +223,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 expect(Polymer.dom(container).queryDistributedElements('*').length)
                     .to.be.equal(2);
                 done();
-              }, 1);
-            });
+              }, SWIPE_TIMEOUT);
+            }, 1);
           });
 
       test(
@@ -240,8 +246,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 expect(Polymer.dom(container).queryDistributedElements('*').length)
                     .to.be.equal(2);
                 done();
-              }, 1);
-            });
+              }, SWIPE_TIMEOUT);
+            }, 1);
           });
     });
 
@@ -268,9 +274,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               });
 
               MockInteractions.track(element, 60, 0);
-            });
+            }, 1);
           });
     });
+    })();
   </script>
 </body>
 </html>
