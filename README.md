@@ -1,65 +1,77 @@
-
-<!---
-
-This README is automatically generated from the comments in these files:
-iron-swipeable-container.html
-
-Edit those files, and our readme bot will duplicate them over here!
-Edit this file, and the bot will squash your changes :)
-
-The bot does some handling of markdown. Please file a bug if it does the wrong
-thing! https://github.com/PolymerLabs/tedium/issues
-
--->
-
+[![Published on NPM](https://img.shields.io/npm/v/@polymer/iron-swipeable-container.svg)](https://www.npmjs.com/package/@polymer/iron-swipeable-container)
 [![Build status](https://travis-ci.org/PolymerElements/iron-swipeable-container.svg?branch=master)](https://travis-ci.org/PolymerElements/iron-swipeable-container)
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://webcomponents.org/element/@polymer/iron-swipeable-container)
 
-_[Demo and API docs](https://elements.polymer-project.org/elements/iron-swipeable-container)_
-
-
-##&lt;iron-swipeable-container&gt;
-
+## &lt;iron-swipeable-container&gt;
 `<iron-swipeable-container>` is a container that allows any of its nested
 children (native or custom elements) to be swiped away. By default it supports
 a curved or horizontal transition, but the transition duration and properties
 can be customized.
 
-Example:
+See: [Documentation](https://www.webcomponents.org/element/@polymer/iron-swipeable-container),
+  [Demo](https://www.webcomponents.org/element/@polymer/iron-swipeable-container/demo/demo/index.html).
 
-```html
-<iron-swipeable-container>
-  <div>I can be swiped</div>
-  <paper-card heading="Me too!"></paper-card>
-</iron-swipeable-container>
+## Usage
+
+### Installation
+```
+npm install --save @polymer/iron-swipeable-container
 ```
 
-To disable swiping on individual children, you must give them the `.disable-swipe`
-class. Alternatively, to disable swiping on the whole container, you can use its
-`disable-swipe` attribute:
-
+### In an html file
 ```html
-<iron-swipeable-container>
-  <div class="disable-swipe">I cannot be swiped be swiped</div>
-  <paper-card heading="But I can!"></paper-card>
-</iron-swipeable-container>
-
-<iron-swipeable-container disable-swipe>
-  <div>I cannot be swiped</div>
-  <paper-card heading="Me neither :("></paper-card>
-</iron-swipeable-container>
+<html>
+  <head>
+    <script type="module">
+      import '@polymer/iron-swipeable-container/iron-swipeable-container.js';
+    </script>
+  </head>
+  <body>
+    <iron-swipeable-container>
+      <div>I can be swiped</div>
+      <paper-card heading="Me too!"></paper-card>
+    </iron-swipeable-container>
+  </body>
+</html>
 ```
 
-It is a good idea to disable text selection on any of the children that you
-want to be swiped:
+### In a Polymer 3 element
+```js
+import {PolymerElement, html} from '@polymer/polymer';
+import '@polymer/iron-swipeable-container/iron-swipeable-container.js';
 
-```css
-.swipe {
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -webkit-user-select: none;
-  user-select: none;
-  cursor: default;
+class SampleElement extends PolymerElement {
+  static get template() {
+    return html`
+    <iron-swipeable-container>
+      <div>I can be swiped</div>
+      <paper-card heading="Me too!"></paper-card>
+    </iron-swipeable-container>
+    `;
+  }
 }
+customElements.define('sample-element', SampleElement);
 ```
 
+## Contributing
+If you want to send a PR to this element, here are
+the instructions for running the tests and demo locally:
 
+### Installation
+```sh
+git clone https://github.com/PolymerElements/iron-swipeable-container
+cd iron-swipeable-container
+npm install
+npm install -g polymer-cli
+```
+
+### Running the demo locally
+```sh
+polymer serve --npm
+open http://127.0.0.1:<port>/demo/
+```
+
+### Running the tests
+```sh
+polymer test --npm
+```
