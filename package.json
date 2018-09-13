@@ -17,9 +17,9 @@
     "webmat": "^0.2.0",
     "@webcomponents/webcomponentsjs": "^2.0.0",
     "wct-browser-legacy": "^1.0.1",
-    "@polymer/iron-test-helpers": "^3.0.0-pre.25",
-    "@polymer/paper-card": "^3.0.0-pre.25",
-    "@polymer/paper-styles": "^3.0.0-pre.25",
+    "@polymer/iron-test-helpers": "^3.0.0-pre.26",
+    "@polymer/paper-card": "^3.0.0-pre.26",
+    "@polymer/paper-styles": "^3.0.0-pre.26",
     "@polymer/gen-typescript-declarations": "^1.5.1"
   },
   "scripts": {
